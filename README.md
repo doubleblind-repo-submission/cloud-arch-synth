@@ -10,6 +10,8 @@ Repository Structure
 | `Bootstrap_Test.ipynb`                        | Optional notebook for running the Bootstrap .632 statistical test.                                                        |
 
 
+The main notebook includes a generalized generation section, which serves as the core logic for creating synthetic architectures. From this section, users can easily modify parameters or conditions to generate architectures with specific characteristics — for example, focusing on Edge architectures or emphasizing the presence of particular cloud services. To illustrate how such adaptations can be implemented, we provide an additional complete section within the notebook that demonstrates how to generate Edge-oriented architectures. This example is intended to guide readers in customizing and extending the main generation code according to their own research goals or experimental needs.
+
 How to Use
 
 1. Run the Main File
