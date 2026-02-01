@@ -15,8 +15,9 @@
 | `Survey.md` | Markdown file that describes the post-activity survey completed by the students. |
 | `activity_schedule.md` | Markdown file describing the activity schedule, including the time allocation for each activity step and the checkpoints used to monitor progress and guide the final submission. |
 | `activity_printout.md` | Student-facing activity handout with instructions to draw the architecture/service flow diagram and guiding questions on changes (services added/removed), design assumptions, and proposed validations/metrics. |
-
-
+| `MasterMap_NOTES_ES_EN.csv` | Cloud service equivalence master map (AWS → Azure/GCP/OSS alternatives). Includes Quality (EXACT/CLOSE/APPROX/NA) and bilingual notes (Notes_ES, Notes_EN) to justify the mapping and highlight key differences. |
+| `MappingEquivalencies.ipynb` | Jupyter/Colab notebook that loads MasterMap_NOTES_ES_EN.csv and provides a lookup workflow to retrieve Azure/GCP/OSS alternatives for one or more AWS services (comma-separated). |
+| `MasterMap_Description.md` | Documentation guide explaining how to interpret and maintain the cloud service equivalence master map (columns, Quality, Notes, conventions, and special cases like UserCompany*/UserConsumer*).|
 ---
 
 ## Generalized Generation and Customization
@@ -64,6 +65,16 @@ In addition to the generation and analysis code, the repository includes files r
 -  **`Survey.md`** details the post-activity survey completed by the students.
 -  **`activity_schedule.md`** outlines the classroom activity schedule, specifying the time allocation for each step (Edge vs. HPC explanation, diagramming, Q1–Q3) and the progress checkpoints used to keep teams on track through submission.
 - **`activity_printout.md`** provides the student-facing activity handout. It includes instructions to draw the architecture/service flow diagram and a set of guiding questions covering (i) services added/removed (up to three changes), (ii) design assumptions (Edge vs. HPC processing, stream vs. batch data movement, and storage choices), and (iii) proposed validations and metrics (latency, throughput, scalability, and fault tolerance).
+
+---
+
+## Service Equivalence Mapping (AWS ↔ Azure ↔ GCP ↔ OSS)
+
+This section documents the Cloud Service Equivalence Toolkit, including the MasterMap (AWS → Azure/GCP/OSS alternatives), its interpretation guide (MasterMap_Description.md), and the Colab workflow (MappingEquivalencies.ipynb) used to query and export equivalences for one or multiple services.
+
+- **`MasterMap_NOTES_ES_EN.csv`** This master map is a **living document**. The listed equivalences and notes are **not fixed** and may change over time due to cloud provider updates (new services, deprecations, feature changes) and differing architectural interpretations. The mapping is also **explicitly instructor-editable**: the instructor running the activity may refine, correct, or extend entries based on course needs and feedback. This is **intended and valid** for the activity—the goal is to provide a practical baseline for cross-cloud reasoning, not an immutable “official truth”.**FOR USAGE AND MAINTENANCE DETAILS, PLEASE REVIEW "MasterMap_Description.md".**
+- **`MappingEquivalencies.ipynb`** Jupyter/Google Colab notebook that queries the equivalence dictionary by accepting one or multiple comma-separated service keys (e.g., S3, EKS, EC2) and returning their mapped values (Azure, GCP, Open Source, Quality, Notes_EN). It handles UserCompany* / UserConsumer* as end-user actors (not cloud services) and exports the lookup results to a CSV saved in the same folder as the dictionary, with an underscore-joined filename.
+- **`MasterMap_Description.md`** Complete documentation for the Cloud Service Equivalence Master Map. It defines the file scope and intent (AWS → Azure/GCP/OSS alternatives), explains what each row represents (cloud-service entries vs. special non-cloud actor/end-user entries), and details how to interpret each column (Servicio AWS, Azure, GCP, Open Source, Quality, Notes_ES, Notes_EN). It formalizes the meaning of Quality (EXACT, CLOSE, APPROX, NA), clarifies how to read multi-option mappings (A / B, A + B, -, empty cells), and explains the role of Notes as justification and tradeoff documentation. It also documents special handling for UserCompany* / UserConsumer* entries as end-user actors/endpoints (not cloud services) and includes a short disclaimer that the map is instructor-editable and expected to evolve with cloud changes and course feedback.
 
 
 ---
